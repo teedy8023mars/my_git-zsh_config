@@ -16,10 +16,8 @@ export PATH=${PATH}:/usr/local/mysql-8.0.27-macos11-x86_64/bin
 
 #ZSH_THEME="agnoster"
 ZSH_THEME="powerlevel10k/powerlevel10k"
-#run Peftch
-pfetch
 alias vim="nvim"
-
+alias ls='lsd'
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -82,6 +80,7 @@ alias vim="nvim"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     vi-mode
+    sudo
     web-search
     copydir
     git
@@ -133,3 +132,5 @@ unset __conda_setup
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
