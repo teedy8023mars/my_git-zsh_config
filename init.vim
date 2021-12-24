@@ -27,7 +27,7 @@ call plug#begin('~/.vim/plugged')
 "auto pair
 Plug 'jiangmiao/auto-pairs'  
 
-"Gruvbox theme
+"Theme
 Plug 'gruvbox-community/gruvbox'
 
 "Vim plugin for Git

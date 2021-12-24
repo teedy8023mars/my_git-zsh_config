@@ -16,8 +16,6 @@ export PATH=${PATH}:/usr/local/mysql-8.0.27-macos11-x86_64/bin
 
 #ZSH_THEME="agnoster"
 ZSH_THEME="powerlevel10k/powerlevel10k"
-alias vim="nvim"
-alias ls='lsd'
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -35,7 +33,7 @@ alias ls='lsd'
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -112,8 +110,8 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias vim="nvim"
+alias ls='lsd'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
