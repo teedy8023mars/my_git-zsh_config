@@ -26,26 +26,21 @@ set scrolloff=10
 call plug#begin('~/.vim/plugged')
 "auto pair
 Plug 'jiangmiao/auto-pairs'  
-
+"fuzzy finder
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 "Theme
 Plug 'gruvbox-community/gruvbox'
-
 "Vim plugin for Git
 Plug 'tpope/vim-fugitive'
-
 "navigator
 Plug 'christoomey/vim-tmux-navigator'
-
 "use gcc to comment out the entire line
 Plug 'tpope/vim-commentary' 
-
 "Nerdtree and icon
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
-
 "syntax highlight
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
 "airline and theme
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
