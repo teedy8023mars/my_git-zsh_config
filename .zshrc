@@ -112,7 +112,7 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias vim="nvim"
-alias ls='lsd'
+alias ls='logo-ls'
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
