@@ -17,30 +17,35 @@ set noswapfile nobackup
 set tabstop=4 softtabstop=4 shiftwidth=4
 set fileformat=unix
 set noerrorbells 
+set backspace=indent,start,eol
 set hidden
 set confirm "prompt when closing unsaved file"
-set backspace=indent,eol,start
 set title
 set scrolloff=10
 
 call plug#begin('~/.vim/plugged')
 "auto pair
 Plug 'jiangmiao/auto-pairs'  
-"fuzzy finder
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
 "Theme
 Plug 'gruvbox-community/gruvbox'
+
 "Vim plugin for Git
 Plug 'tpope/vim-fugitive'
+
 "navigator
 Plug 'christoomey/vim-tmux-navigator'
+
 "use gcc to comment out the entire line
 Plug 'tpope/vim-commentary' 
+
 "Nerdtree and icon
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
+
 "syntax highlight
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
 "airline and theme
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -50,5 +55,30 @@ colorscheme gruvbox
 set background=dark
 let g:airline_theme='base16_gruvbox_dark_hard'
 let g:airline_powerline_fonts = 1
+
 map <C-n> :NERDTreeToggle<CR>
-map <C-f> :NERDTreeFocus<CR> 
+map <C-f> :NERDTreeFocus<CR>
+map <C-t> :NERDTreeToggle<CR>
+
+" Start NERDTree when Vim is started without file arguments.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+
+" Start NERDTree. If a file is specified, move the cursor to its window.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+
+" Start NERDTree, unless a file or session is specified, eg. vim -S session_file.vim.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == '' | NERDTree | endif
+
+" Start NERDTree when Vim starts with a directory argument.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
