@@ -2,14 +2,38 @@ pfetch
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.i
+# Path to your oh-my-zsh installation.
 export ZSH="/Users/notorious/.oh-my-zsh"
 export PATH=${PATH}:/usr/local/mysql-8.0.27-macos11-x86_64/bin
+
+# HADOOP
+export HADOOP_HOME='/usr/local/Cellar/hadoop-3.2.3'
+export PATH=$PATH:$HADOOP_HOME/bin
+export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib:$HADOOP_COMMON_LIB_NATIVE_DIR"
+
+# Spark
+export SPARK_HOME='/usr/local/spark'
+export PATH=$PATH:$SPARK_HOME/bin
+
+# # SCALA
+# export SCALA_HOME='/usr/local/Cellar/scala/2.13.8'
+# export PATH=$PATH:$SCALA_HOME/bin
+
+# # JAVA
+# export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk-18.0.1.1.jdk/Contents/Home'
+# export PATH=$PATH:$JAVA_HOME/bin
+
+# pyenv path
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -81,7 +105,7 @@ plugins=(
     vi-mode
     sudo
     web-search
-    copydir
+    copypath
     git
     zsh-syntax-highlighting
     zsh-autosuggestions 
@@ -110,9 +134,9 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
+# Defined Aliases
 alias vim="nvim"
-alias ls='logo-ls'
+alias ls='lsd'
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -130,3 +154,6 @@ unset __conda_setup
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
